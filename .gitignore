@@ -5,7 +5,8 @@ node_modules/
 # build
 dist/
 .astro/
-.vercel/
+.vercel/*
+!.vercel/project.json
 
 # secrets and local config
 .env

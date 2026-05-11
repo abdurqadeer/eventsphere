@@ -1,0 +1,10 @@
+{
+  "framework": "astro",
+  "buildCommand": "pnpm build",
+  "installCommand": "pnpm install",
+  "outputDirectory": "dist",
+  "github": {
+    "enabled": true,
+    "autoAlias": true
+  }
+}
