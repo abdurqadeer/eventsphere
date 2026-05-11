@@ -15,14 +15,17 @@ const {
   title,
   description,
   canonical = new URL(Astro.url.pathname, Astro.site).href,
-  ogImage = new URL("/img/og-default.jpg", Astro.site).href,
+  ogImage = `${Astro.url.origin}/img/og-default.jpg`,
   ogType = "website",
   jsonLd,
   noindex = false,
 } = Astro.props;
 
 const siteName = "Eventsphere Photobooths";
-const fullTitle = title === siteName ? title : `${title} | ${siteName}`;
+const fullTitle =
+  title === siteName || title.includes(siteName)
+    ? title
+    : `${title} | ${siteName}`;
 
 const schemaBlocks = jsonLd
   ? Array.isArray(jsonLd)
