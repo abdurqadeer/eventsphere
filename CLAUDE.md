@@ -199,3 +199,31 @@ worth remembering — gotchas, decisions, things that didn't work.)
 
 - 2026-05-11: Project kickoff. Migrating from React/Vite SPA to Astro for
   the static-HTML SEO win. Source site reviewed — see docs/AUDIT.md.
+
+- 2026-05-11: Day 1 complete. Astro 5.7.13 + Tailwind v4 scaffolded, all
+  components built, Vercel deployed, Lighthouse SEO = 100 confirmed.
+  See docs/AGENT_STATE.md for current infra URLs and IDs.
+
+- 2026-05-11: pnpm 10 blocks build scripts by default. Always include
+  `"pnpm": { "onlyBuiltDependencies": ["@tailwindcss/oxide","esbuild","sharp"] }`
+  in package.json — otherwise sharp and Tailwind's Rust engine silently skip
+  their postinstall and things break at runtime.
+
+- 2026-05-11: GitHub PAT needs BOTH `repo` AND `workflow` scopes to push
+  `.github/workflows/` files. `repo` alone is rejected with a clear error.
+
+- 2026-05-11: Use `VERCEL_TOKEN` as an environment variable, not `--token`
+  flag — the npx vercel CLI has a parsing bug with tokens that contain `/`.
+  GitHub Actions secrets → env vars is the right pattern anyway.
+
+- 2026-05-11: `astro.config.mjs` `site` URL controls ALL absolute URLs in
+  the build (canonical, og:image, og:url, sitemap, JSON-LD). Set it to the
+  domain that's actually serving traffic, not the eventual domain. Currently
+  set to `https://eventsphere-cyan.vercel.app`. Change `PROD_DOMAIN` in
+  `astro.config.mjs` to `https://eventspherephotobooths.com` on Day 5 after
+  DNS cutover — also update `public/robots.txt` Sitemap line at the same time.
+
+- 2026-05-11: Tailwind v4 uses CSS-first config (`@theme` block in
+  `src/styles/global.css`), not `tailwind.config.js`. Brand tokens are:
+  `--color-brand`, `--color-brand-hover`, `--color-brand-deep`,
+  `--color-brand-tint`. These generate `bg-brand`, `text-brand`, etc.
