@@ -1,0 +1,86 @@
+---
+const year = new Date().getFullYear();
+---
+
+<footer class="bg-brand-deep text-zinc-100">
+  <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
+    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
+      <!-- Brand -->
+      <div class="lg:col-span-1">
+        <a href="/" class="inline-block font-bold text-xl text-white mb-3" aria-label="Eventsphere Photobooths">
+          Eventsphere<span class="text-brand">.</span>
+        </a>
+        <p class="text-zinc-300 text-sm leading-relaxed">
+          Photo booth rentals for weddings, corporate events, birthdays, and more across the Greater Toronto Area and Ottawa.
+        </p>
+      </div>
+
+      <!-- Services -->
+      <div>
+        <h3 class="text-sm font-semibold uppercase tracking-wider text-zinc-400 mb-3">Services</h3>
+        <ul class="space-y-2 text-sm">
+          <li><a href="/booths/360-video-booth" class="text-zinc-300 hover:text-white transition-colors">360° Video Booth</a></li>
+          <li><a href="/booths/instant-print-booth" class="text-zinc-300 hover:text-white transition-colors">Instant Print Booth</a></li>
+          <li><a href="/packages" class="text-zinc-300 hover:text-white transition-colors">Packages & Pricing</a></li>
+          <li><a href="/gallery" class="text-zinc-300 hover:text-white transition-colors">Gallery</a></li>
+        </ul>
+      </div>
+
+      <!-- Events -->
+      <div>
+        <h3 class="text-sm font-semibold uppercase tracking-wider text-zinc-400 mb-3">Events</h3>
+        <ul class="space-y-2 text-sm">
+          <li><a href="/weddings" class="text-zinc-300 hover:text-white transition-colors">Weddings</a></li>
+          <li><a href="/corporate-events" class="text-zinc-300 hover:text-white transition-colors">Corporate Events</a></li>
+          <li><a href="/birthdays" class="text-zinc-300 hover:text-white transition-colors">Birthdays</a></li>
+          <li><a href="/proms-and-school-events" class="text-zinc-300 hover:text-white transition-colors">Proms & School Events</a></li>
+        </ul>
+      </div>
+
+      <!-- Contact -->
+      <div>
+        <h3 class="text-sm font-semibold uppercase tracking-wider text-zinc-400 mb-3">Contact</h3>
+        <ul class="space-y-2 text-sm">
+          <li>
+            <a href="tel:+16479791231" class="text-zinc-300 hover:text-white transition-colors">
+              (647) 979-1231
+            </a>
+          </li>
+          <li>
+            <a href="mailto:eaphotobooths@gmail.com" class="text-zinc-300 hover:text-white transition-colors">
+              eaphotobooths@gmail.com
+            </a>
+          </li>
+          <li class="pt-1">
+            <a
+              href="https://www.instagram.com/eventsphere.to"
+              target="_blank"
+              rel="noopener noreferrer"
+              class="text-zinc-300 hover:text-white transition-colors"
+            >
+              @eventsphere.to (GTA)
+            </a>
+          </li>
+          <li>
+            <a
+              href="https://www.instagram.com/eventsphere.ott"
+              target="_blank"
+              rel="noopener noreferrer"
+              class="text-zinc-300 hover:text-white transition-colors"
+            >
+              @eventsphere.ott (Ottawa)
+            </a>
+          </li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="border-t border-white/10 mt-10 pt-6 flex flex-col sm:flex-row justify-between items-center gap-3 text-xs text-zinc-400">
+      <p>&copy; {year} Eventsphere Photobooths. All rights reserved.</p>
+      <div class="flex gap-4">
+        <a href="/terms" class="hover:text-zinc-200 transition-colors">Terms</a>
+        <a href="/privacy" class="hover:text-zinc-200 transition-colors">Privacy</a>
+      </div>
+    </div>
+  </div>
+</footer>

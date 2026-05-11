@@ -1,0 +1,35 @@
+{
+  "name": "eventsphere",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "dev": "astro dev",
+    "build": "astro build",
+    "preview": "astro preview",
+    "astro": "astro",
+    "check": "astro check",
+    "lint": "eslint . && prettier --check .",
+    "lh": "pnpm build && pnpm preview & sleep 3 && npx lighthouse http://localhost:4321 --output=json --quiet"
+  },
+  "dependencies": {
+    "@astrojs/mdx": "4.3.0",
+    "@astrojs/sitemap": "3.4.0",
+    "@tailwindcss/vite": "4.1.6",
+    "astro": "5.7.13",
+    "sharp": "0.33.5",
+    "tailwindcss": "4.1.6"
+  },
+  "devDependencies": {
+    "@astrojs/check": "^0.9.9",
+    "@types/node": "22.15.3",
+    "typescript": "5.8.3"
+  },
+  "pnpm": {
+    "onlyBuiltDependencies": [
+      "@tailwindcss/oxide",
+      "esbuild",
+      "sharp"
+    ]
+  }
+}

@@ -1,0 +1,164 @@
+---
+const formspreeUrl = import.meta.env.FORMSPREE_URL;
+
+export interface Props {
+  heading?: string;
+  subheading?: string;
+  class?: string;
+}
+
+const {
+  heading = "Get a free quote",
+  subheading = "Tell us about your event and we'll get back to you within 24 hours.",
+  class: extraClass,
+} = Astro.props;
+---
+
+<div class:list={["bg-white rounded-2xl shadow-lg p-6 sm:p-8", extraClass]}>
+  {heading && <h2 class="text-2xl font-bold text-zinc-900 mb-1">{heading}</h2>}
+  {subheading && <p class="text-zinc-500 text-sm mb-6">{subheading}</p>}
+
+  {
+    !formspreeUrl && (
+      <p class="text-sm text-amber-700 bg-amber-50 border border-amber-200 rounded-md px-3 py-2 mb-4">
+        Form submissions are not configured — set <code>FORMSPREE_URL</code> in
+        your environment to enable this form.
+      </p>
+    )
+  }
+
+  <form
+    id="inquiry-form"
+    method="POST"
+    action={formspreeUrl ?? "#"}
+    class="space-y-4"
+    novalidate
+  >
+    <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+      <div>
+        <label for="first-name" class="block text-sm font-medium text-zinc-700 mb-1">
+          First name <span aria-hidden="true" class="text-brand">*</span>
+        </label>
+        <input
+          type="text"
+          id="first-name"
+          name="firstName"
+          required
+          autocomplete="given-name"
+          class="w-full rounded-lg border border-zinc-300 px-3 py-2 text-sm text-zinc-900 placeholder-zinc-400 focus:outline-none focus:ring-2 focus:ring-brand focus:border-transparent transition"
+          placeholder="Jane"
+        />
+      </div>
+      <div>
+        <label for="last-name" class="block text-sm font-medium text-zinc-700 mb-1">
+          Last name <span aria-hidden="true" class="text-brand">*</span>
+        </label>
+        <input
+          type="text"
+          id="last-name"
+          name="lastName"
+          required
+          autocomplete="family-name"
+          class="w-full rounded-lg border border-zinc-300 px-3 py-2 text-sm text-zinc-900 placeholder-zinc-400 focus:outline-none focus:ring-2 focus:ring-brand focus:border-transparent transition"
+          placeholder="Smith"
+        />
+      </div>
+    </div>
+
+    <div>
+      <label for="email" class="block text-sm font-medium text-zinc-700 mb-1">
+        Email <span aria-hidden="true" class="text-brand">*</span>
+      </label>
+      <input
+        type="email"
+        id="email"
+        name="email"
+        required
+        autocomplete="email"
+        class="w-full rounded-lg border border-zinc-300 px-3 py-2 text-sm text-zinc-900 placeholder-zinc-400 focus:outline-none focus:ring-2 focus:ring-brand focus:border-transparent transition"
+        placeholder="jane@example.com"
+      />
+    </div>
+
+    <div>
+      <label for="phone" class="block text-sm font-medium text-zinc-700 mb-1">
+        Phone
+      </label>
+      <input
+        type="tel"
+        id="phone"
+        name="phone"
+        autocomplete="tel"
+        class="w-full rounded-lg border border-zinc-300 px-3 py-2 text-sm text-zinc-900 placeholder-zinc-400 focus:outline-none focus:ring-2 focus:ring-brand focus:border-transparent transition"
+        placeholder="(416) 555-1234"
+      />
+    </div>
+
+    <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+      <div>
+        <label for="event-type" class="block text-sm font-medium text-zinc-700 mb-1">
+          Event type <span aria-hidden="true" class="text-brand">*</span>
+        </label>
+        <select
+          id="event-type"
+          name="eventType"
+          required
+          class="w-full rounded-lg border border-zinc-300 px-3 py-2 text-sm text-zinc-900 focus:outline-none focus:ring-2 focus:ring-brand focus:border-transparent transition"
+        >
+          <option value="" disabled selected>Select one…</option>
+          <option value="wedding">Wedding</option>
+          <option value="corporate">Corporate Event</option>
+          <option value="birthday">Birthday Party</option>
+          <option value="prom">Prom / School Event</option>
+          <option value="anniversary">Anniversary</option>
+          <option value="holiday">Holiday Party</option>
+          <option value="charity">Charity Gala</option>
+          <option value="mitzvah">Mitzvah</option>
+          <option value="other">Other</option>
+        </select>
+      </div>
+      <div>
+        <label for="event-date" class="block text-sm font-medium text-zinc-700 mb-1">
+          Event date
+        </label>
+        <input
+          type="date"
+          id="event-date"
+          name="eventDate"
+          class="w-full rounded-lg border border-zinc-300 px-3 py-2 text-sm text-zinc-900 focus:outline-none focus:ring-2 focus:ring-brand focus:border-transparent transition"
+        />
+      </div>
+    </div>
+
+    <div>
+      <label for="message" class="block text-sm font-medium text-zinc-700 mb-1">
+        Tell us about your event
+      </label>
+      <textarea
+        id="message"
+        name="message"
+        rows="4"
+        class="w-full rounded-lg border border-zinc-300 px-3 py-2 text-sm text-zinc-900 placeholder-zinc-400 focus:outline-none focus:ring-2 focus:ring-brand focus:border-transparent transition resize-y"
+        placeholder="Venue, number of guests, which booth(s) you're interested in, any add-ons…"
+      ></textarea>
+    </div>
+
+    <!-- Honeypot spam guard -->
+    <input type="text" name="_gotcha" class="hidden" tabindex="-1" autocomplete="off" />
+
+    <!-- Formspree redirect after submit -->
+    <input type="hidden" name="_next" value="/thanks" />
+
+    <button
+      type="submit"
+      class="w-full py-3 px-6 rounded-full bg-brand hover:bg-brand-hover text-white font-semibold text-base transition-colors focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-brand"
+    >
+      Send inquiry
+    </button>
+
+    <p class="text-xs text-zinc-400 text-center">
+      We respond within 24 hours.
+      <a href="/privacy" class="underline hover:text-zinc-600">Privacy policy</a>.
+    </p>
+  </form>
+</div>

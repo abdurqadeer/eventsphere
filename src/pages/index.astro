@@ -1,0 +1,186 @@
+---
+import Layout from "@/layouts/Layout.astro";
+import Header from "@/components/Header.astro";
+import Footer from "@/components/Footer.astro";
+import CTAButton from "@/components/CTAButton.astro";
+import InquiryForm from "@/components/InquiryForm.astro";
+
+const localBusiness = {
+  "@context": "https://schema.org",
+  "@type": "LocalBusiness",
+  "@id": "https://eventspherephotobooths.com/#business",
+  name: "Eventsphere Photobooths",
+  description:
+    "Photo booth rentals for weddings, corporate events, birthdays, proms, and more. Serving the Greater Toronto Area and Ottawa.",
+  url: "https://eventspherephotobooths.com",
+  telephone: "+16479791231",
+  email: "eaphotobooths@gmail.com",
+  logo: "https://eventspherephotobooths.com/img/logo.svg",
+  image: "https://eventspherephotobooths.com/img/og-default.jpg",
+  priceRange: "$$",
+  areaServed: [
+    "Toronto",
+    "Mississauga",
+    "Vaughan",
+    "Markham",
+    "Brampton",
+    "Richmond Hill",
+    "Oakville",
+    "Burlington",
+    "Scarborough",
+    "Etobicoke",
+    "North York",
+    "Ottawa",
+  ],
+  hasOfferCatalog: {
+    "@type": "OfferCatalog",
+    name: "Photo Booth Packages",
+    itemListElement: [
+      {
+        "@type": "Offer",
+        name: "Instant Print Photobooth — Silver",
+        description: "2-hour rental with unlimited 2×6 prints",
+        price: "375",
+        priceCurrency: "CAD",
+      },
+      {
+        "@type": "Offer",
+        name: "360° Video Booth — Silver",
+        description: "2-hour rental with slow-motion video and digital sharing",
+        price: "400",
+        priceCurrency: "CAD",
+      },
+    ],
+  },
+  sameAs: [
+    "https://www.instagram.com/eventsphere.to",
+    "https://www.instagram.com/eventsphere.ott",
+  ],
+};
+---
+
+<Layout
+  title="Toronto Photo Booth Rental | Eventsphere Photobooths"
+  description="Rent a 360° video booth or instant print photobooth for your wedding, corporate event, or birthday in Toronto, the GTA, and Ottawa. Unlimited prints, professional setup, digital sharing."
+  jsonLd={localBusiness}
+>
+  <Header slot="header" />
+
+  <!-- Hero -->
+  <section class="bg-gradient-to-br from-brand-tint via-white to-white py-20 px-4 sm:px-6 lg:px-8">
+    <div class="max-w-6xl mx-auto grid lg:grid-cols-2 gap-12 items-center">
+      <div>
+        <p class="text-brand font-semibold text-sm uppercase tracking-wider mb-3">
+          GTA &amp; Ottawa · Weddings · Corporate · Birthdays
+        </p>
+        <h1 class="text-4xl sm:text-5xl font-extrabold text-zinc-900 leading-tight mb-5">
+          Photo booth rental that your guests will talk about
+        </h1>
+        <p class="text-zinc-600 text-lg mb-8 max-w-lg">
+          We bring the booth, you keep the memories. 360° slow-motion video and
+          instant print photobooths — set up and broken down by us, fully
+          customized for your event.
+        </p>
+        <div class="flex flex-wrap gap-3">
+          <CTAButton href="/contact" size="lg">Get a free quote</CTAButton>
+          <CTAButton href="/booths/360-video-booth" variant="outline" size="lg">
+            See our booths
+          </CTAButton>
+        </div>
+      </div>
+      <!-- Placeholder image slot — replace with real hero photo -->
+      <div class="rounded-2xl bg-brand-tint border border-brand/20 aspect-[4/3] flex items-center justify-center text-brand/40 text-sm font-medium">
+        Hero photo coming soon
+      </div>
+    </div>
+  </section>
+
+  <!-- Value props -->
+  <section class="py-16 px-4 sm:px-6 lg:px-8 bg-white">
+    <div class="max-w-6xl mx-auto">
+      <h2 class="text-2xl font-bold text-zinc-900 text-center mb-10">
+        Why Eventsphere?
+      </h2>
+      <div class="grid sm:grid-cols-3 gap-8">
+        {
+          [
+            {
+              title: "Professional setup included",
+              body: "We arrive 60–90 minutes before your event, set everything up, and stay for the full rental. You don't lift a finger.",
+            },
+            {
+              title: "Instant prints, unlimited",
+              body: "Custom-branded 2×6 or 4×6 strips printed on-site. Guests take them home the same night — real souvenirs, not just a digital link.",
+            },
+            {
+              title: "360° slow-motion video",
+              body: "Our rotating platform captures slow-motion video clips your guests can share directly from the booth to Instagram, iMessage, or email.",
+            },
+          ].map(({ title, body }) => (
+            <div class="bg-brand-tint rounded-xl p-6 border border-brand/10">
+              <h3 class="font-bold text-zinc-900 mb-2">{title}</h3>
+              <p class="text-zinc-600 text-sm">{body}</p>
+            </div>
+          ))
+        }
+      </div>
+    </div>
+  </section>
+
+  <!-- Booth previews -->
+  <section class="py-16 px-4 sm:px-6 lg:px-8 bg-brand-tint">
+    <div class="max-w-6xl mx-auto">
+      <h2 class="text-2xl font-bold text-zinc-900 text-center mb-2">Our booths</h2>
+      <p class="text-zinc-500 text-center mb-10">Pick one, or book both for the ultimate experience.</p>
+      <div class="grid sm:grid-cols-2 gap-8">
+        {
+          [
+            {
+              href: "/booths/360-video-booth",
+              name: "360° Video Booth",
+              tagline: "Slow-motion video, shared instantly",
+              desc: "Guests step onto the platform, spin, and walk away with a shareable slow-mo clip in seconds. The crowd-pleaser at every wedding and corporate gala.",
+              from: "400",
+            },
+            {
+              href: "/booths/instant-print-booth",
+              name: "Instant Print Photobooth",
+              tagline: "Printed keepsakes guests take home",
+              desc: "DSLR-quality photos with professional lighting. Unlimited 2×6 strips or 4×6 prints, customized with your event template and branding.",
+              from: "375",
+            },
+          ].map(({ href, name, tagline, desc, from }) => (
+            <div class="bg-white rounded-2xl overflow-hidden shadow-sm border border-zinc-100">
+              <div class="bg-brand/10 aspect-video flex items-center justify-center text-brand/40 text-sm font-medium">
+                Photo coming soon
+              </div>
+              <div class="p-6">
+                <p class="text-brand text-xs font-semibold uppercase tracking-wider mb-1">{tagline}</p>
+                <h3 class="text-xl font-bold text-zinc-900 mb-2">{name}</h3>
+                <p class="text-zinc-600 text-sm mb-4">{desc}</p>
+                <div class="flex items-center justify-between">
+                  <span class="text-zinc-500 text-sm">From <strong class="text-zinc-900">${from} CAD</strong></span>
+                  <a href={href} class="text-brand text-sm font-semibold hover:text-brand-hover transition-colors">
+                    Learn more →
+                  </a>
+                </div>
+              </div>
+            </div>
+          ))
+        }
+      </div>
+    </div>
+  </section>
+
+  <!-- Inquiry form -->
+  <section class="py-16 px-4 sm:px-6 lg:px-8 bg-white">
+    <div class="max-w-2xl mx-auto">
+      <InquiryForm
+        heading="Check your date"
+        subheading="Fill out the form and we'll confirm availability for your event date within 24 hours."
+      />
+    </div>
+  </section>
+
+  <Footer slot="footer" />
+</Layout>
