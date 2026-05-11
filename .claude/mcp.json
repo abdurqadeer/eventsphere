@@ -1,0 +1,23 @@
+{
+  "$schema": "https://json.schemastore.org/claude-code-mcp.json",
+  "mcpServers": {
+    "playwright": {
+      "command": "npx",
+      "args": ["-y", "@playwright/mcp@latest"],
+      "description": "Headless browser, Lighthouse, screenshots, accessibility audits"
+    },
+    "context7": {
+      "command": "npx",
+      "args": ["-y", "@upstash/context7-mcp@latest"],
+      "description": "Live version-pinned docs for Astro, Tailwind, React, etc."
+    },
+    "github": {
+      "type": "http",
+      "url": "https://api.githubcopilot.com/mcp/",
+      "headers": {
+        "Authorization": "Bearer ${GITHUB_PAT}"
+      },
+      "description": "PRs, issues, Actions, repo management"
+    }
+  }
+}

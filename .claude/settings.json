@@ -1,0 +1,88 @@
+{
+  "$schema": "https://json.schemastore.org/claude-code-settings.json",
+  "permissions": {
+    "allow": [
+      "Bash(pnpm dev:*)",
+      "Bash(pnpm build:*)",
+      "Bash(pnpm preview:*)",
+      "Bash(pnpm astro check:*)",
+      "Bash(pnpm lint:*)",
+      "Bash(pnpm test:*)",
+      "Bash(pnpm lh:*)",
+      "Bash(pnpm install:*)",
+      "Bash(pnpm add:*)",
+      "Bash(pnpm create:*)",
+      "Bash(git status:*)",
+      "Bash(git diff:*)",
+      "Bash(git log:*)",
+      "Bash(git add:*)",
+      "Bash(git commit:*)",
+      "Bash(git branch:*)",
+      "Bash(git checkout:*)",
+      "Bash(git push:*)",
+      "Bash(npx lighthouse:*)",
+      "Bash(npx playwright:*)",
+      "Bash(curl -sI:*)",
+      "Bash(curl -s:*)",
+      "mcp__playwright__*",
+      "mcp__github__*",
+      "mcp__context7__*",
+      "Edit(src/**)",
+      "Write(src/**)",
+      "Edit(public/**)",
+      "Write(public/**)",
+      "Edit(docs/**)",
+      "Write(docs/**)",
+      "Edit(.github/**)",
+      "Write(.github/**)"
+    ],
+    "deny": [
+      "Bash(git push --force:*)",
+      "Bash(git push -f:*)",
+      "Bash(git push origin main:*)",
+      "Bash(rm -rf:*)",
+      "Bash(sudo:*)",
+      "Edit(.env)",
+      "Edit(.env.local)",
+      "Edit(.env.production)",
+      "Write(.env)",
+      "Write(.env.local)",
+      "Write(.env.production)",
+      "Edit(.claude/settings.local.json)"
+    ],
+    "ask": [
+      "Bash(git push:*)",
+      "Bash(pnpm publish:*)",
+      "Bash(vercel:*)",
+      "Edit(CLAUDE.md)",
+      "Edit(.claude/settings.json)",
+      "Edit(.claude/mcp.json)"
+    ]
+  },
+  "hooks": {
+    "SessionStart": [
+      {
+        "hooks": [
+          { "type": "command", "command": ".claude/hooks/session-start.sh" }
+        ]
+      }
+    ],
+    "PostToolUse": [
+      {
+        "matcher": "Edit|Write",
+        "hooks": [
+          { "type": "command", "command": ".claude/hooks/post-edit-check.sh" }
+        ]
+      }
+    ],
+    "PreToolUse": [
+      {
+        "matcher": "Bash",
+        "hooks": [
+          { "type": "command", "command": ".claude/hooks/pre-deploy-lighthouse.sh" }
+        ]
+      }
+    ]
+  },
+  "model": "sonnet"
+}

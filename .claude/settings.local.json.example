@@ -1,0 +1,8 @@
+{
+  "_comment": "Copy this file to settings.local.json and fill in your secrets. settings.local.json is gitignored.",
+  "env": {
+    "GITHUB_PAT": "ghp_your_token_here",
+    "VERCEL_TOKEN": "your_vercel_token_here",
+    "FORMSPREE_URL": "https://formspree.io/f/your_form_id"
+  }
+}

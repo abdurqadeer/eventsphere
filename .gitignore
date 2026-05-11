@@ -1,0 +1,36 @@
+# dependencies
+node_modules/
+.pnpm-store/
+
+# build
+dist/
+.astro/
+.vercel/
+
+# secrets and local config
+.env
+.env.local
+.env.production
+.claude/settings.local.json
+
+# editor
+.vscode/
+.idea/
+*.swp
+
+# OS
+.DS_Store
+Thumbs.db
+
+# logs
+*.log
+npm-debug.log*
+pnpm-debug.log*
+
+# test
+playwright-report/
+test-results/
+
+# lighthouse
+/tmp/lh-*.json
+docs/audits/*.local.md
