@@ -15,7 +15,7 @@ const {
   title,
   description,
   canonical = new URL(Astro.url.pathname, Astro.site).href,
-  ogImage = `${Astro.url.origin}/img/og-default.jpg`,
+  ogImage = new URL("/img/og-default.jpg", Astro.site).href,
   ogType = "website",
   jsonLd,
   noindex = false,

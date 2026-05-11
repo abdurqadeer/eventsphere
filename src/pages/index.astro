@@ -5,18 +5,20 @@ import Footer from "@/components/Footer.astro";
 import CTAButton from "@/components/CTAButton.astro";
 import InquiryForm from "@/components/InquiryForm.astro";
 
+const siteUrl = Astro.site?.href.replace(/\/$/, "") ?? "https://eventspherephotobooths.com";
+
 const localBusiness = {
   "@context": "https://schema.org",
   "@type": "LocalBusiness",
-  "@id": "https://eventspherephotobooths.com/#business",
+  "@id": `${siteUrl}/#business`,
   name: "Eventsphere Photobooths",
   description:
     "Photo booth rentals for weddings, corporate events, birthdays, proms, and more. Serving the Greater Toronto Area and Ottawa.",
-  url: "https://eventspherephotobooths.com",
+  url: siteUrl,
   telephone: "+16479791231",
   email: "eaphotobooths@gmail.com",
-  logo: "https://eventspherephotobooths.com/img/logo.svg",
-  image: "https://eventspherephotobooths.com/img/og-default.jpg",
+  logo: `${siteUrl}/img/logo.svg`,
+  image: `${siteUrl}/img/og-default.jpg`,
   priceRange: "$$",
   areaServed: [
     "Toronto",

@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://eventspherephotobooths.com/sitemap-index.xml
+Sitemap: https://eventsphere-cyan.vercel.app/sitemap-index.xml
